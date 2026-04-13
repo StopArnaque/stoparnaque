@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alertes fraudes | StopArnaque</title>
+  <meta name="description" content="Retrouver les alertes fraudes StopArnaque avec les points a surveiller, les gestes utiles et les sources officielles.">
+  <meta name="theme-color" content="#2d5a4b">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20260411b">
+  <link rel="shortcut icon" href="assets/favicon.svg?v=20260411b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Accueil StopArnaque">
+        <span class="brand-mark">
+          <img class="brand-logo" src="assets/stoparnaque-mark.svg?v=20260411b" alt="Logo StopArnaque">
+        </span>
+        <span class="brand-copy">
+          <strong>StopArnaque</strong>
+          <span>Voir clair. Ralentir. Se protéger.</span>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="verifier.html">Verifier</a>
+        <a href="agir.html">Que faire</a>
+        <a href="premium.html">Ressources</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="page-hero premium-hero">
+        <p class="eyebrow">Alertes fraudes</p>
+        <h1>Retrouver l'alerte complete, avec la bonne source officielle</h1>
+        <p>Chaque alerte reprend l'essentiel du message a surveiller, les signes a reconnaitre et le lien officiel pour verifier ou signaler.</p>
+      </section>
+
+      <section class="section alert-feed alert-feed-full">
+        <div id="alertsSummaryPage" class="panel alerts-summary" hidden></div>
+        <div id="alertsList" class="alerts-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>StopArnaque</strong>
+        <p>Des alertes lisibles, des gestes simples et des sources officielles pour mieux reagir.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="verifier.html">Verifier</a>
+        <a href="agir.html">Que faire</a>
+      </div>
+    </footer>
+  </div>
+  <script src="alerts-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

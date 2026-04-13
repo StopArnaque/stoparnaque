@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vérifier un message | StopArnaque</title>
+  <meta name="description" content="Une lecture douce et rassurante des messages suspects pour repérer les signaux d'alerte.">
+  <meta name="theme-color" content="#2d5a4b">
+  <link rel="canonical" href="https://stoparnaquestudio2.netlify.app/verifier.html">
+  <meta property="og:locale" content="fr_CA">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="StopArnaque">
+  <meta property="og:title" content="Verifier un message | StopArnaque">
+  <meta property="og:description" content="Colle un SMS ou un email suspect pour reperer les signaux d'alerte et ralentir avant d'agir.">
+  <meta property="og:url" content="https://stoparnaquestudio2.netlify.app/verifier.html">
+  <meta property="og:image" content="https://stoparnaquestudio2.netlify.app/stoparnaque-ad-landscape-1200x628.png?v=20260411c">
+  <meta property="og:image:secure_url" content="https://stoparnaquestudio2.netlify.app/stoparnaque-ad-landscape-1200x628.png?v=20260411c">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="StopArnaque aide a verifier un message suspect et a reperer les signaux d'alerte.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Verifier un message | StopArnaque">
+  <meta name="twitter:description" content="Colle un SMS ou un email suspect pour reperer les signaux d'alerte et ralentir avant d'agir.">
+  <meta name="twitter:image" content="https://stoparnaquestudio2.netlify.app/stoparnaque-ad-landscape-1200x628.png?v=20260411c">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20260411b">
+  <link rel="shortcut icon" href="assets/favicon.svg?v=20260411b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Accueil StopArnaque">
+        <span class="brand-mark">
+          <img class="brand-logo" src="assets/stoparnaque-mark.svg?v=20260411b" alt="Logo StopArnaque">
+        </span>
+        <span class="brand-copy">
+          <strong>StopArnaque</strong>
+          <span>Voir clair. Ralentir. Se protéger.</span>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Accueil</a>
+        <a href="agir.html">Que faire</a>
+        <a href="premium.html">Ressources</a>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="page-hero">
+        <p class="eyebrow">Vérifier un message</p>
+        <h1>Prenons une pause avant d'ouvrir, payer ou répondre.</h1>
+        <p>Colle ici le texte d'un SMS ou d'un email suspect. Cette lecture donne une première estimation et t'aide à voir plus clair, sans te presser.</p>
+      </section>
+
+      <section class="analyzer-layout">
+        <div class="panel analyzer-panel">
+          <label class="field-label" for="messageInput">Texte du message suspect</label>
+          <textarea id="messageInput" class="message-box" placeholder="Exemple: Votre compte sera suspendu aujourd'hui. Cliquez ici pour confirmer vos informations..."></textarea>
+          <button id="analyzeButton" class="button button-primary" type="button">Vérifier le message avant d’agir</button>
+          <p class="panel-note">L'analyse reste dans la page. C'est une aide simple pour repérer les signaux d'alerte les plus courants.</p>
+        </div>
+
+        <div class="panel result-panel" id="resultPanel" aria-live="polite">
+          <p class="result-kicker">Lecture</p>
+          <h2 id="riskTitle">En attente d'une lecture calme</h2>
+          <p id="riskSummary">Colle un message puis lance l'analyse pour voir les points qui méritent d'être vérifiés de plus près.</p>
+          <ul id="riskList" class="simple-list"></ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Ce que le vérificateur observe</p>
+          <h2>Quelques drapeaux rouges qui reviennent souvent</h2>
+        </div>
+        <div class="card-grid">
+          <article class="info-card">
+            <h3>Une urgence artificielle</h3>
+            <p>Quand un message pousse à agir tout de suite, il cherche parfois à court-circuiter ton calme et ta réflexion.</p>
+          </article>
+          <article class="info-card">
+            <h3>Une demande sensible</h3>
+            <p>Code, mot de passe, vérification inhabituelle ou lien à ouvrir pour confirmer quelque chose.</p>
+          </article>
+          <article class="info-card">
+            <h3>Un ton ou un contexte qui sonne faux</h3>
+            <p>Une marque connue, un petit paiement, une erreur de langue ou une logique inhabituelle peuvent mettre la puce à l'oreille.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="quote-card">
+          <p>Si un message te stresse, c'est souvent une bonne raison de le vérifier lentement.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>StopArnaque</strong>
+        <p>Une aide douce pour retrouver du recul avant d'agir.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="agir.html">Que faire</a>
+        <a href="premium.html">Ressources</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
