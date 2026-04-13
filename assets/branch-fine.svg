@@ -1,0 +1,35 @@
+<svg width="520" height="220" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="twig" x1="56" y1="170" x2="424" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9C7856" stop-opacity="0.55"/>
+      <stop offset="0.55" stop-color="#557763" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#29455A" stop-opacity="0.62"/>
+    </linearGradient>
+    <linearGradient id="leafGreen" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C9DBD0" stop-opacity="0.86"/>
+      <stop offset="1" stop-color="#6B8F7B" stop-opacity="0.84"/>
+    </linearGradient>
+    <linearGradient id="leafBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#DCE6EF" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#6D8FA7" stop-opacity="0.84"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M34 176C94 155 145 132 182 105C225 73 259 38 318 28C355 21 396 28 462 53" stroke="url(#twig)" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M121 137C145 123 161 110 176 87" stroke="#708975" stroke-opacity="0.55" stroke-width="2.1" stroke-linecap="round"/>
+  <path d="M204 91C220 80 232 66 243 48" stroke="#7C8D89" stroke-opacity="0.44" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M292 49C308 44 321 35 335 22" stroke="#6A7E86" stroke-opacity="0.42" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M365 34C384 37 400 35 419 29" stroke="#6A7E86" stroke-opacity="0.4" stroke-width="1.8" stroke-linecap="round"/>
+
+  <path d="M99 146C112 128 132 122 149 129C136 145 116 151 99 146Z" fill="url(#leafGreen)"/>
+  <path d="M145 114C157 98 176 92 191 101C179 116 160 121 145 114Z" fill="url(#leafBlue)"/>
+  <path d="M188 80C201 66 220 63 233 73C220 86 201 90 188 80Z" fill="url(#leafGreen)"/>
+  <path d="M223 60C235 45 252 41 267 49C255 63 238 68 223 60Z" fill="url(#leafBlue)"/>
+  <path d="M275 39C291 30 309 31 320 44C303 50 286 48 275 39Z" fill="url(#leafGreen)"/>
+  <path d="M343 34C359 27 378 29 389 41C372 46 354 43 343 34Z" fill="url(#leafBlue)"/>
+  <path d="M386 42C403 36 421 40 431 53C413 57 395 54 386 42Z" fill="url(#leafGreen)"/>
+
+  <circle cx="156" cy="151" r="18" fill="#EAF1E8" fill-opacity="0.34"/>
+  <circle cx="268" cy="63" r="20" fill="#E4EBF0" fill-opacity="0.22"/>
+  <circle cx="397" cy="64" r="17" fill="#ECF1EA" fill-opacity="0.24"/>
+</svg>
