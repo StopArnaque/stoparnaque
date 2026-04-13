@@ -1579,6 +1579,29 @@ a {
     linear-gradient(180deg, rgba(250, 251, 247, 0.98), rgba(240, 243, 248, 0.95));
 }
 
+.support-grid {
+  align-items: stretch;
+}
+
+.support-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.resource-number {
+  margin: 0.2rem 0 0.35rem;
+  color: var(--primary-deep);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.support-card .resource-actions {
+  margin-top: auto;
+  padding-top: 0.85rem;
+}
+
 .page-main {
   padding-top: 1.3rem;
 }
