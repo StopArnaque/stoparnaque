@@ -1,0 +1,51 @@
+<svg width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a-bg" x1="36" y1="28" x2="184" y2="192" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FCFAF5"/>
+      <stop offset="0.52" stop-color="#EAF2EA"/>
+      <stop offset="1" stop-color="#DEE7EE"/>
+    </linearGradient>
+    <linearGradient id="a-shield" x1="110" y1="56" x2="110" y2="168" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A6758"/>
+      <stop offset="1" stop-color="#1E3F5E"/>
+    </linearGradient>
+    <linearGradient id="a-branch" x1="56" y1="148" x2="132" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9B7250"/>
+      <stop offset="1" stop-color="#365D4D"/>
+    </linearGradient>
+    <linearGradient id="a-leaf-1" x1="86" y1="52" x2="121" y2="92" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7EA994"/>
+      <stop offset="1" stop-color="#2D5A4B"/>
+    </linearGradient>
+    <linearGradient id="a-leaf-2" x1="112" y1="44" x2="152" y2="82" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A0BFD1"/>
+      <stop offset="1" stop-color="#224260"/>
+    </linearGradient>
+    <filter id="a-shadow" x="16" y="16" width="188" height="188" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#173229" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#a-shadow)">
+    <rect x="26" y="22" width="168" height="168" rx="48" fill="url(#a-bg)"/>
+    <rect x="27" y="23" width="166" height="166" rx="47" stroke="white" stroke-opacity="0.86" stroke-width="2"/>
+  </g>
+
+  <path d="M71 156C68.6 138.8 73.4 123.7 85.4 111.4C93.3 103.2 103.3 96.1 114.8 87.1C123 80.7 128.7 75.1 132.7 67.6" stroke="url(#a-branch)" stroke-width="6.4" stroke-linecap="round"/>
+  <path d="M83.4 114.8C90.7 111.7 98.3 110.4 106.5 111" stroke="#476D5D" stroke-opacity="0.72" stroke-width="3.6" stroke-linecap="round"/>
+  <path d="M97.3 101.2C103.6 98.9 109.8 98.5 116.1 99.6" stroke="#365673" stroke-opacity="0.64" stroke-width="3" stroke-linecap="round"/>
+
+  <path d="M79.2 91.8V71.9L110 54.6L140.8 71.9V106.4C140.8 126.5 128.4 140.7 110 149.2C91.6 140.7 79.2 126.5 79.2 106.4V91.8Z" fill="url(#a-shield)" fill-opacity="0.09" stroke="#274B56" stroke-opacity="0.62" stroke-width="3.2" stroke-linejoin="round"/>
+  <path d="M110 66.5C121.9 73.1 128 84.4 128 100.5C128 112.9 123.6 123.6 114.9 132.8" stroke="#244B3F" stroke-opacity="0.22" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M110 66.5C98.1 73.1 92 84.4 92 100.5C92 112.9 96.4 123.6 105.1 132.8" stroke="#27496D" stroke-opacity="0.2" stroke-width="3.2" stroke-linecap="round"/>
+
+  <path d="M85.4 76.8C85.4 58.7 99 43.6 116.8 41.9C116.6 58.8 102.8 75.3 85.4 76.8Z" fill="url(#a-leaf-1)"/>
+  <path d="M112.8 67.6C116.1 50 131.9 37.2 149.4 38.2C146.1 54.7 130.2 68.8 112.8 67.6Z" fill="url(#a-leaf-2)"/>
+  <path d="M101.4 50.9C103 60.2 99 68 90.7 72.8" stroke="#EEF5EF" stroke-opacity="0.9" stroke-width="1.9" stroke-linecap="round"/>
+  <path d="M130.2 47.9C132.2 55 129.6 61.8 122.9 66.8" stroke="#F1F6FA" stroke-opacity="0.88" stroke-width="1.9" stroke-linecap="round"/>
+
+  <circle cx="152" cy="63" r="10.5" fill="#E36F47"/>
+  <circle cx="152" cy="63" r="18" stroke="#E36F47" stroke-opacity="0.24" stroke-width="3"/>
+  <path d="M151.8 57.6V64.8" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+  <circle cx="151.8" cy="68.7" r="1.8" fill="white"/>
+</svg>
