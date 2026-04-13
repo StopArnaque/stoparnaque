@@ -1590,10 +1590,24 @@ a {
   letter-spacing: 0;
 }
 
+.premium-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  align-items: center;
+}
+
 .premium-card .button-primary {
   background: linear-gradient(135deg, rgba(255, 247, 241, 0.98), rgba(250, 224, 209, 0.95));
   color: var(--accent-deep);
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+}
+
+.premium-card .button-secondary.premium-secondary-button {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1));
+  color: #f7f4eb;
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
 }
 
 .premium-list,
