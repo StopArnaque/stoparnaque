@@ -1896,10 +1896,11 @@ a {
   display: block;
   color: var(--secondary);
   font-family: var(--font-sans);
-  font-size: clamp(1.02rem, 1.7vw, 1.28rem);
+  font-size: clamp(0.9rem, 1.15vw, 1.06rem);
   line-height: 1.05;
   overflow-wrap: normal;
   word-break: normal;
+  white-space: nowrap;
 }
 
 .footer-brand p {
