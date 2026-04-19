@@ -954,6 +954,35 @@ a {
   color: var(--secondary);
 }
 
+.fraud-impact-stats {
+  margin-bottom: 0;
+}
+
+.fraud-impact-stats article {
+  min-height: 100%;
+}
+
+.stat-label {
+  margin: 0 0 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--primary-deep);
+}
+
+.fraud-impact-stats .stat-number {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2.45rem, 4vw, 3.35rem);
+}
+
+.stat-context {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .stats article:nth-child(1) {
   background:
     radial-gradient(circle at top right, rgba(217, 233, 223, 0.84), transparent 9rem),
