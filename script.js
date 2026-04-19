@@ -138,6 +138,59 @@ if (analyzeButton && messageInput) {
   analyzeButton.addEventListener("click", analyzeMessage);
 }
 
+function trackAnalyticsEvent(eventName, params = {}) {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("event", eventName, {
+    transport_type: "beacon",
+    ...params
+  });
+}
+
+function getCleanPath(value) {
+  if (!value) {
+    return "";
+  }
+
+  try {
+    const url = new URL(value, window.location.href);
+    return `${url.pathname}${url.hash || ""}`;
+  } catch (error) {
+    return value;
+  }
+}
+
+function trackPrimaryCtaClick(event) {
+  const link = event.target.closest("a[href]");
+
+  if (!link) {
+    return;
+  }
+
+  const href = (link.getAttribute("href") || "").trim();
+
+  if (!href) {
+    return;
+  }
+
+  if (href === "verifier.html") {
+    trackAnalyticsEvent("verify_message_click", {
+      link_path: getCleanPath(href)
+    });
+    return;
+  }
+
+  if (href === "#newsletter" || href === "index.html#newsletter") {
+    trackAnalyticsEvent("newsletter_cta_click", {
+      link_path: getCleanPath(href)
+    });
+  }
+}
+
+document.addEventListener("click", trackPrimaryCtaClick);
+
 function upsertHiddenInput(form, name, value) {
   let input = form.querySelector(`input[name="${name}"]`);
 
@@ -244,6 +297,27 @@ const isButtondownActive = setupButtondownNewsletter();
 
 if (!isButtondownActive) {
   setupBrevoNewsletter();
+}
+
+function trackNewsletterFormSubmit() {
+  if (!newsletterEmail) {
+    return;
+  }
+
+  const email = newsletterEmail.value.trim();
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!isValidEmail) {
+    return;
+  }
+
+  trackAnalyticsEvent("newsletter_signup_submit", {
+    form_provider: isButtondownActive ? "buttondown" : "local_form"
+  });
+}
+
+if (newsletterForm) {
+  newsletterForm.addEventListener("submit", trackNewsletterFormSubmit);
 }
 
 if (newsletterForm && !isButtondownActive) {
