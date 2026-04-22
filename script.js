@@ -182,6 +182,21 @@ function trackPrimaryCtaClick(event) {
     return;
   }
 
+  if (href.includes("stoparnaquestudio.lemonsqueezy.com/checkout/buy/")) {
+    const checkoutUrl = new URL(href, window.location.href);
+    const guideLanguage = href.includes("df3fdc0a-e76d-41bc-9a3e-779cdc7e0ddb")
+      ? "fr"
+      : href.includes("795a84c2-5b3b-42a1-8c60-5c680c60fbdb")
+        ? "en"
+        : "unknown";
+    trackAnalyticsEvent("guide_checkout_click", {
+      guide_language: guideLanguage,
+      link_host: checkoutUrl.host,
+      link_path: checkoutUrl.pathname
+    });
+    return;
+  }
+
   if (href === "#newsletter" || href === "index.html#newsletter") {
     trackAnalyticsEvent("newsletter_cta_click", {
       link_path: getCleanPath(href)
@@ -190,6 +205,66 @@ function trackPrimaryCtaClick(event) {
 }
 
 document.addEventListener("click", trackPrimaryCtaClick);
+
+function setupGlobalNewsletterBar() {
+  if (!document.body || !document.querySelector(".site-shell")) {
+    return;
+  }
+
+  const path = window.location.pathname.split("/").pop() || "index.html";
+  const allowedPages = new Set([
+    "index.html",
+    "verifier.html",
+    "agir.html",
+    "alertes.html"
+  ]);
+
+  if (!allowedPages.has(path)) {
+    return;
+  }
+
+  try {
+    if (window.sessionStorage.getItem("stopArnaqueNewsletterBarHidden") === "1") {
+      return;
+    }
+  } catch (error) {
+    // Ignore sessionStorage issues and continue showing the bar.
+  }
+
+  const href = path === "index.html" ? "#newsletter" : "index.html#newsletter";
+  const bar = document.createElement("div");
+  bar.className = "global-newsletter-bar";
+  bar.setAttribute("role", "complementary");
+  bar.setAttribute("aria-label", "Invitation à la newsletter");
+  bar.innerHTML = `
+    <div class="global-newsletter-copy">
+      <span class="global-newsletter-pill">Newsletter</span>
+      <p>Recevoir les alertes utiles dès qu’un nouveau guide ou une nouvelle alerte est disponible</p>
+    </div>
+    <div class="global-newsletter-actions">
+      <a class="button button-primary" href="${href}">S'inscrire</a>
+      <button class="global-newsletter-dismiss" type="button" aria-label="Masquer le bandeau newsletter">×</button>
+    </div>
+  `;
+
+  const dismissButton = bar.querySelector(".global-newsletter-dismiss");
+
+  dismissButton?.addEventListener("click", () => {
+    bar.remove();
+    document.body.classList.remove("has-floating-newsletter");
+
+    try {
+      window.sessionStorage.setItem("stopArnaqueNewsletterBarHidden", "1");
+    } catch (error) {
+      // Ignore sessionStorage issues.
+    }
+  });
+
+  document.body.classList.add("has-floating-newsletter");
+  document.body.appendChild(bar);
+}
+
+setupGlobalNewsletterBar();
 
 function upsertHiddenInput(form, name, value) {
   let input = form.querySelector(`input[name="${name}"]`);
