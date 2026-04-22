@@ -1732,6 +1732,82 @@ body.has-floating-newsletter {
   letter-spacing: -0.04em;
 }
 
+.promo-callout {
+  margin: 0 0 1.1rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at top right, rgba(248, 220, 200, 0.72), transparent 8rem),
+    linear-gradient(180deg, rgba(255, 250, 245, 0.98), rgba(248, 249, 243, 0.95));
+  border: 1px solid rgba(244, 162, 97, 0.22);
+  box-shadow: 0 14px 30px rgba(197, 109, 52, 0.08);
+}
+
+.promo-callout p {
+  margin: 0;
+}
+
+.promo-callout p + p {
+  margin-top: 0.45rem;
+}
+
+.promo-callout-label {
+  color: var(--accent-deep);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.promo-code {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.22rem 0.62rem;
+  margin-left: 0.18rem;
+  border-radius: 999px;
+  background: rgba(39, 93, 173, 0.12);
+  border: 1px solid rgba(39, 93, 173, 0.18);
+  color: var(--secondary);
+  font-size: 0.98em;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.promo-hint {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.promo-callout-dark {
+  background:
+    radial-gradient(circle at top right, rgba(248, 220, 200, 0.18), transparent 9rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.premium-card .promo-callout p,
+.premium-card .promo-hint {
+  color: rgba(245, 249, 248, 0.94);
+}
+
+.premium-card .promo-callout-label {
+  color: #ffd4b4;
+}
+
+.premium-card .promo-code {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff7ef;
+}
+
+.promo-inline-wrap {
+  margin-bottom: 1rem;
+  max-width: 31rem;
+}
+
 .premium-price span {
   margin-left: 0.35rem;
   font-family: "Manrope", sans-serif;
