@@ -1867,6 +1867,17 @@ body.has-floating-newsletter {
   gap: 1.7rem;
 }
 
+.page-download-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.2rem;
+}
+
+.page-download-cta .button-primary {
+  min-width: min(100%, 24rem);
+  justify-content: center;
+}
+
 .premium-hero {
   max-width: 58rem;
 }
