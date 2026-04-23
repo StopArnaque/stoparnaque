@@ -544,7 +544,7 @@ function setupGlobalNewsletterBar() {
   bar.innerHTML = `
     <div class="global-newsletter-copy">
       <span class="global-newsletter-pill">Newsletter</span>
-      <p>Recevoir les alertes utiles dès qu’une nouvelle alerte importante est disponible</p>
+      <p>Recevoir les alertes utiles dès qu’une nouvelle fraude importante est signalée</p>
     </div>
     <div class="global-newsletter-actions">
       <a class="button button-primary" href="${href}">S'inscrire</a>
