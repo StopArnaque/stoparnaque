@@ -4,6 +4,11 @@ const resultPanel = document.querySelector("#resultPanel");
 const riskTitle = document.querySelector("#riskTitle");
 const riskSummary = document.querySelector("#riskSummary");
 const riskList = document.querySelector("#riskList");
+const riskBadge = document.querySelector("#riskBadge");
+const riskScoreFill = document.querySelector("#riskScoreFill");
+const riskScoreText = document.querySelector("#riskScoreText");
+const insightList = document.querySelector("#insightList");
+const actionList = document.querySelector("#actionList");
 const newsletterForm = document.querySelector("#newsletterForm");
 const newsletterEmail = document.querySelector("#newsletterEmail");
 const newsletterFeedback = document.querySelector("#newsletterFeedback");
@@ -131,6 +136,306 @@ function analyzeMessage() {
     ]
   );
 
+  revealResultPanel();
+}
+
+function analyzeMessage() {
+  const content = messageInput.value.trim();
+
+  if (!content) {
+    renderResult(
+      "risk-low",
+      "Ajoute un message à analyser",
+      "Colle le texte d'un SMS ou d'un email pour obtenir une première analyse.",
+      ["Cette analyse reste locale et sert à repérer les signaux les plus courants."]
+    );
+    revealResultPanel();
+    return;
+  }
+
+  const matches = rules
+    .filter((rule) => rule.test.test(content))
+    .map((rule) => rule.message);
+
+  if (matches.length >= 3) {
+    renderResult(
+      "risk-high",
+      "Plusieurs signaux méritent une vraie prudence",
+      "Le message cumule des indices fréquents d'arnaque. Ne clique pas, ne paie pas et passe par le canal officiel pour vérifier.",
+      matches
+    );
+    revealResultPanel();
+    return;
+  }
+
+  if (matches.length >= 1) {
+    renderResult(
+      "risk-medium",
+      "Quelques points méritent une vérification",
+      "Le texte contient au moins un élément sensible ou inhabituel. Il vaut mieux confirmer par un site ou un numéro officiel.",
+      matches
+    );
+    revealResultPanel();
+    return;
+  }
+
+  renderResult(
+    "risk-low",
+    "Peu de signaux d'alerte détectés ici",
+    "Le message ne déclenche pas les règles les plus courantes, mais il reste utile de vérifier l'expéditeur, l'URL et le contexte global.",
+    [
+      "Si quelque chose te paraît anormal, fais-toi confiance et prends un second avis.",
+      "Une organisation sérieuse accepte que tu prennes le temps de vérifier."
+    ]
+  );
+
+  revealResultPanel();
+}
+
+const enhancedRules = [
+  {
+    id: "urgency",
+    label: "Urgence artificielle",
+    points: 24,
+    test: /urgent|immediat|immediatement|dernier rappel|expire|expiration|aujourd'hui|aujourdhui|suspendu|bloque|sous 24h|maintenant/,
+    tokens: ["urgent", "immediat", "dernier rappel", "suspendu", "bloque", "24h", "maintenant"],
+    meaning: "La pression de temps est souvent utilisée pour empêcher toute vérification.",
+    actions: ["Ne clique pas tout de suite.", "Prends 30 secondes et vérifie autrement."]
+  },
+  {
+    id: "link",
+    label: "Lien ou redirection",
+    points: 21,
+    test: /https?:\/\/|www\.|bit\.ly|tinyurl|cliquez|clique ici|lien|url/,
+    tokens: ["http", "www", "bit.ly", "tinyurl", "cliquez", "clique ici", "lien", "url"],
+    meaning: "Le lien peut mener vers une fausse page de connexion, de livraison ou de paiement.",
+    actions: ["N'ouvre pas le lien depuis le message.", "Passe par le vrai site ou l'application officielle."]
+  },
+  {
+    id: "credentials",
+    label: "Code ou identifiants demandés",
+    points: 25,
+    test: /mot de passe|password|code|otp|verification|verifier votre compte|confirmer votre compte|identifiant/,
+    tokens: ["mot de passe", "password", "code", "otp", "verification", "identifiant"],
+    meaning: "Une demande de code ou d'identifiants est un signal de risque élevé.",
+    actions: ["Ne partage jamais un code reçu par SMS ou email.", "N'entre pas ton mot de passe depuis un lien reçu."]
+  },
+  {
+    id: "payment",
+    label: "Paiement ou frais demandés",
+    points: 22,
+    test: /paiement|virement|carte|frais|amende|penalite|bitcoin|crypto|montant/,
+    tokens: ["paiement", "virement", "carte", "frais", "amende", "bitcoin", "crypto", "montant"],
+    meaning: "Les petits montants et frais urgents servent souvent à faire baisser la vigilance.",
+    actions: ["Ne paie rien depuis le message.", "Vérifie d'abord via la banque ou le vrai service."]
+  },
+  {
+    id: "impersonation",
+    label: "Marque ou institution imitée",
+    points: 18,
+    test: /colis|livraison|banque|impot|cra|paypal|microsoft|apple|service client|desjardins|poste canada/,
+    tokens: ["colis", "livraison", "banque", "impot", "cra", "paypal", "microsoft", "apple", "desjardins", "poste canada"],
+    meaning: "Le nom d'une organisation connue peut être utilisé pour inspirer confiance.",
+    actions: ["Vérifie le message par un canal officiel.", "Regarde le vrai domaine avant toute action."]
+  },
+  {
+    id: "secrecy",
+    label: "Isolement ou pression émotionnelle",
+    points: 14,
+    test: /n'en parle a personne|n'en parlez a personne|confidentiel|urgence familiale|aide moi vite|j'ai change de numero/,
+    tokens: ["confidentiel", "aide moi vite", "change de numero"],
+    meaning: "Quand un message cherche à t'isoler, il devient plus difficile de prendre du recul.",
+    actions: ["Demande un second avis si le message te bouscule.", "Vérifie l'identité de la personne par un autre moyen."]
+  }
+];
+
+function normalizeAnalysisText(value) {
+  return (value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function extractMatchedTerms(normalizedContent, rule) {
+  return (rule.tokens || [])
+    .filter((token) => normalizedContent.includes(token))
+    .slice(0, 3);
+}
+
+function renderList(target, items) {
+  if (!target) {
+    return;
+  }
+
+  target.innerHTML = "";
+
+  items.forEach((item) => {
+    const entry = document.createElement("li");
+    entry.textContent = item;
+    target.appendChild(entry);
+  });
+}
+
+function renderRichResult({ levelClass, badgeClass, badgeLabel, title, summary, score, scoreText, findings, insights, actions }) {
+  resultPanel.classList.remove("risk-high", "risk-medium", "risk-low");
+  resultPanel.classList.add(levelClass);
+
+  if (riskBadge) {
+    riskBadge.className = `risk-badge ${badgeClass}`;
+    riskBadge.textContent = badgeLabel;
+  }
+
+  riskTitle.textContent = title;
+  riskSummary.textContent = summary;
+
+  if (riskScoreFill) {
+    riskScoreFill.style.width = `${Math.max(6, Math.min(score, 100))}%`;
+  }
+
+  if (riskScoreText) {
+    riskScoreText.textContent = scoreText;
+  }
+
+  renderList(riskList, findings);
+  renderList(insightList, insights);
+  renderList(actionList, actions);
+}
+
+function buildDetailedAnalysis(content) {
+  const normalizedContent = normalizeAnalysisText(content);
+  const matchedRules = enhancedRules
+    .map((rule) => {
+      const isMatch = rule.test.test(normalizedContent);
+      const evidence = extractMatchedTerms(normalizedContent, rule);
+
+      if (!isMatch && evidence.length === 0) {
+        return null;
+      }
+
+      return {
+        ...rule,
+        evidence
+      };
+    })
+    .filter(Boolean);
+
+  const signalCount = matchedRules.length;
+  const score = Math.min(96, matchedRules.reduce((sum, rule) => sum + rule.points, signalCount ? 8 : 0));
+
+  if (signalCount === 0) {
+    return {
+      levelClass: "risk-low",
+      badgeClass: "risk-badge-low",
+      badgeLabel: "Vigilance modérée",
+      title: "Peu de signaux d'alerte détectés ici",
+      summary: "Le message ne déclenche pas les signaux les plus courants, mais il reste utile de vérifier l'expéditeur, le lien et le contexte.",
+      score,
+      scoreText: "Niveau de vigilance : faible, mais une vérification reste utile",
+      findings: [
+        "Aucun mot de pression ou de paiement n'a été repéré dans le texte collé.",
+        "Cela ne garantit pas que le message soit légitime."
+      ],
+      insights: [
+        "Un faux message peut rester sobre et paraître crédible.",
+        "Le vrai point à vérifier ensuite est souvent l'expéditeur, le domaine ou le contexte réel."
+      ],
+      actions: [
+        "Vérifie l'adresse d'expéditeur ou le numéro utilisé.",
+        "Si un lien est présent, passe par le vrai site au lieu de cliquer.",
+        "Si le message te semble étrange malgré tout, demande un second avis."
+      ]
+    };
+  }
+
+  const matchedIds = new Set(matchedRules.map((rule) => rule.id));
+  const findings = matchedRules.map((rule) => {
+    const evidenceText = rule.evidence.length ? ` Indices repérés : ${rule.evidence.join(", ")}.` : "";
+    return `${rule.label}.${evidenceText}`;
+  });
+
+  const insights = matchedRules.map((rule) => rule.meaning);
+  const actions = [];
+
+  if (matchedIds.has("link")) {
+    actions.push("N'ouvre pas le lien depuis le message.");
+  }
+  if (matchedIds.has("payment")) {
+    actions.push("Ne paie rien avant d'avoir confirmé par le vrai site ou la vraie banque.");
+  }
+  if (matchedIds.has("credentials")) {
+    actions.push("Ne donne aucun code, mot de passe ou identifiant.");
+  }
+  actions.push("Vérifie le message par un canal officiel.");
+  actions.push("Si tu as déjà cliqué ou payé, va sur la page « Que faire » tout de suite.");
+
+  const isHighRisk = score >= 55 || signalCount >= 3 || (matchedIds.has("payment") && matchedIds.has("credentials"));
+
+  if (isHighRisk) {
+    let title = "Plusieurs signaux d'arnaque sont présents";
+
+    if (matchedIds.has("payment") && matchedIds.has("credentials")) {
+      title = "Tentative de fraude très probable";
+    } else if (matchedIds.has("impersonation") && matchedIds.has("link")) {
+      title = "Message à haut risque d'usurpation";
+    }
+
+    return {
+      levelClass: "risk-high",
+      badgeClass: "risk-badge-high",
+      badgeLabel: "Risque élevé",
+      title,
+      summary: "Le message cumule plusieurs mécanismes classiques de fraude. Il vaut mieux ne rien ouvrir, ne rien payer et vérifier par la source officielle.",
+      score,
+      scoreText: `Niveau de vigilance : élevé (${signalCount} signaux repérés)`,
+      findings,
+      insights,
+      actions: Array.from(new Set(actions))
+    };
+  }
+
+  let mediumTitle = "Le message mérite une vraie vérification";
+
+  if (matchedIds.has("link") && matchedIds.has("urgency")) {
+    mediumTitle = "Lien + urgence : vérification recommandée";
+  } else if (matchedIds.has("impersonation")) {
+    mediumTitle = "Le message imite peut-être une organisation connue";
+  }
+
+  return {
+    levelClass: "risk-medium",
+    badgeClass: "risk-badge-medium",
+    badgeLabel: "À vérifier",
+    title: mediumTitle,
+    summary: "Le texte contient au moins un élément sensible ou inhabituel. Ce n'est pas une preuve absolue, mais ce n'est pas un message à traiter à la légère.",
+    score,
+    scoreText: `Niveau de vigilance : moyen (${signalCount} signal${signalCount > 1 ? "aux" : ""} repéré${signalCount > 1 ? "s" : ""})`,
+    findings,
+    insights,
+    actions: Array.from(new Set(actions))
+  };
+}
+
+function analyzeMessage() {
+  const content = messageInput.value.trim();
+
+  if (!content) {
+    renderRichResult({
+      levelClass: "risk-low",
+      badgeClass: "risk-badge-neutral",
+      badgeLabel: "Prêt à analyser",
+      title: "Ajoute un message à analyser",
+      summary: "Colle le texte d'un SMS ou d'un email pour obtenir une réponse plus détaillée.",
+      score: 0,
+      scoreText: "Niveau de vigilance : en attente",
+      findings: ["Aucun texte n'a encore été collé dans le vérificateur."],
+      insights: ["L'analyse changera selon les signaux détectés dans le message."],
+      actions: ["Colle le message complet puis lance l'analyse."]
+    });
+    revealResultPanel();
+    return;
+  }
+
+  renderRichResult(buildDetailedAnalysis(content));
   revealResultPanel();
 }
 

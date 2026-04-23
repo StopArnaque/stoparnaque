@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vérifier un message | StopArnaque</title>
-  <meta name="description" content="Une lecture douce et rassurante des messages suspects pour repérer les signaux d'alerte.">
+  <meta name="description" content="Une analyse simple des messages suspects pour repérer les signaux d'alerte.">
   <meta name="theme-color" content="#2d5a4b">
   <link rel="canonical" href="https://stoparnaquestudio.ca/verifier.html">
   <meta property="og:locale" content="fr_CA">
@@ -59,8 +59,8 @@
     <main class="page-main">
       <section class="page-hero">
         <p class="eyebrow">Vérifier un message</p>
-        <h1>Prenons une pause avant d'ouvrir, payer ou répondre.</h1>
-        <p>Colle ici le texte d'un SMS ou d'un email suspect. Cette lecture donne une première estimation et t'aide à voir plus clair, sans te presser.</p>
+        <h1>Vérifie un message avant d'ouvrir, payer ou répondre.</h1>
+        <p>Colle ici le texte d'un SMS ou d'un email suspect. L'analyse donne une première estimation et aide à repérer les signaux les plus courants.</p>
       </section>
 
       <section class="analyzer-layout">
@@ -72,10 +72,40 @@
         </div>
 
         <div class="panel result-panel" id="resultPanel" aria-live="polite">
-          <p class="result-kicker">Lecture</p>
-          <h2 id="riskTitle">En attente d'une lecture calme</h2>
-          <p id="riskSummary">Colle un message puis lance l'analyse pour voir les points qui méritent d'être vérifiés de plus près.</p>
-          <ul id="riskList" class="simple-list"></ul>
+          <div class="result-topline">
+            <p class="result-kicker">Analyse</p>
+            <p id="riskBadge" class="risk-badge risk-badge-neutral">Prêt à analyser</p>
+          </div>
+          <h2 id="riskTitle">En attente d'une analyse</h2>
+          <p id="riskSummary">Colle un message puis lance l'analyse pour voir les points à vérifier.</p>
+
+          <div class="result-score-wrap">
+            <div class="result-score-bar" aria-hidden="true">
+              <span id="riskScoreFill"></span>
+            </div>
+            <p id="riskScoreText" class="result-score-text">Niveau de vigilance : en attente</p>
+          </div>
+
+          <section class="result-section">
+            <h3>Ce qui a été repéré</h3>
+            <ul id="riskList" class="result-list">
+              <li>Aucun signal analysé pour l'instant.</li>
+            </ul>
+          </section>
+
+          <section class="result-section">
+            <h3>Ce que ça peut vouloir dire</h3>
+            <ul id="insightList" class="result-list result-list-soft">
+              <li>L'analyse t'indiquera ici la logique habituelle derrière les signaux détectés.</li>
+            </ul>
+          </section>
+
+          <section class="result-section">
+            <h3>Quoi faire maintenant</h3>
+            <ol id="actionList" class="result-actions">
+              <li>Lance l'analyse pour obtenir des étapes adaptées au message.</li>
+            </ol>
+          </section>
         </div>
       </section>
 
@@ -102,7 +132,7 @@
 
       <section class="section">
         <div class="quote-card">
-          <p>Si un message te stresse, c'est souvent une bonne raison de le vérifier lentement.</p>
+          <p>On respire. On vérifie calmement.</p>
         </div>
       </section>
     </main>
