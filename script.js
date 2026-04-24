@@ -592,7 +592,7 @@ function setupButtondownNewsletter() {
     ? buttondownConfig.tag.trim()
     : "";
 
-  if (!username || !newsletterForm || !newsletterStatus) {
+  if (!username || !newsletterForm) {
     return false;
   }
 
@@ -618,7 +618,10 @@ function setupButtondownNewsletter() {
     newsletterFeedback.textContent = "";
   }
 
-  newsletterStatus.textContent = "Formulaire Buttondown actif. Les nouvelles inscriptions partiront directement vers ta liste Buttondown.";
+  if (newsletterStatus) {
+    newsletterStatus.hidden = true;
+    newsletterStatus.textContent = "";
+  }
   return true;
 }
 
@@ -628,12 +631,11 @@ function setupBrevoNewsletter() {
     ? Number(brevoConfig.iframeHeight)
     : 420;
 
-  if (!newsletterStatus) {
-    return;
-  }
-
   if (!iframeUrl) {
-    newsletterStatus.textContent = "Formulaire de démonstration actif. Ajoute ton username Buttondown dans buttondown-config.js pour passer en inscription réelle.";
+    if (newsletterStatus) {
+      newsletterStatus.hidden = true;
+      newsletterStatus.textContent = "";
+    }
     return;
   }
 
@@ -647,7 +649,10 @@ function setupBrevoNewsletter() {
     brevoIframe.style.minHeight = `${iframeHeight}px`;
   }
 
-  newsletterStatus.textContent = "Formulaire Brevo actif. Les nouvelles inscriptions seront envoyées vers ta liste Brevo.";
+  if (newsletterStatus) {
+    newsletterStatus.hidden = true;
+    newsletterStatus.textContent = "";
+  }
 }
 
 function handleNewsletterSubmit(event) {
