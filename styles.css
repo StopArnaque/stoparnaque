@@ -325,9 +325,9 @@ a {
 }
 
 .hero-copy h1 {
-  font-size: clamp(3.3rem, 5vw, 5.9rem);
-  max-width: 11.5ch;
-  text-wrap: balance;
+  font-size: clamp(3.05rem, 4.6vw, 5.45rem);
+  max-width: 13ch;
+  text-wrap: pretty;
   background: linear-gradient(135deg, var(--ink) 0%, var(--secondary) 42%, var(--accent-deep) 100%);
   -webkit-background-clip: text;
   background-clip: text;
