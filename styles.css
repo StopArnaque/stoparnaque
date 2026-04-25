@@ -1863,6 +1863,54 @@ body.has-floating-newsletter {
   min-height: 100%;
 }
 
+.premium-reassurance {
+  background:
+    radial-gradient(circle at top right, rgba(247, 210, 196, 0.58), transparent 10rem),
+    radial-gradient(circle at bottom left, rgba(219, 229, 239, 0.52), transparent 10rem),
+    linear-gradient(180deg, rgba(251, 249, 244, 0.99), rgba(241, 246, 240, 0.96));
+  border: 1px solid rgba(45, 90, 75, 0.1);
+  box-shadow: 0 20px 46px rgba(33, 64, 57, 0.08);
+}
+
+.premium-reassurance-stars {
+  margin-bottom: 0.7rem;
+  color: #d9962b;
+  font-size: 1.35rem;
+  letter-spacing: 0.18em;
+}
+
+.premium-reassurance h2 {
+  margin-bottom: 0.9rem;
+}
+
+.premium-reassurance-lead {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.premium-reassurance-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+}
+
+.premium-reassurance-points span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.3rem;
+  padding: 0.52rem 0.92rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(39, 93, 173, 0.12);
+  color: var(--secondary);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
 .premium-main {
   gap: 1.7rem;
 }
