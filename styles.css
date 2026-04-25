@@ -1340,6 +1340,13 @@ body.has-floating-newsletter {
   margin: 0;
 }
 
+.faq-helper {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
 .faq-card summary {
   list-style: none;
   cursor: pointer;
