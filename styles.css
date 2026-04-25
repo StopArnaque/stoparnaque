@@ -326,7 +326,7 @@ a {
 
 .hero-copy h1 {
   font-size: clamp(3.3rem, 5vw, 5.9rem);
-  max-width: 8.2ch;
+  max-width: 11.5ch;
   text-wrap: balance;
   background: linear-gradient(135deg, var(--ink) 0%, var(--secondary) 42%, var(--accent-deep) 100%);
   -webkit-background-clip: text;
@@ -404,6 +404,25 @@ a {
   justify-items: start;
   gap: 0.8rem;
   margin: 1.45rem 0 0;
+}
+
+.hero-helper,
+.hero-trust {
+  margin: 0;
+  max-width: 34rem;
+  color: rgba(73, 92, 99, 0.92);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.hero-helper a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hero-trust {
+  color: rgba(31, 61, 51, 0.82);
+  font-size: 0.92rem;
 }
 
 .hero-action-label {
@@ -792,10 +811,10 @@ body.has-floating-newsletter {
 .hero-panel h2 {
   margin: 0;
   font-family: "Fraunces", serif;
-  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-size: clamp(1.35rem, 1.85vw, 1.8rem);
   line-height: 1.08;
   letter-spacing: -0.03em;
-  max-width: 10ch;
+  max-width: 12ch;
 }
 
 .hero-mini-list {
@@ -818,6 +837,8 @@ body.has-floating-newsletter {
   border-bottom: 1px dashed rgba(28, 54, 87, 0.16);
   color: var(--primary-deep);
   font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 .hero-mini-list li::before {
