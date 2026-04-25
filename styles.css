@@ -1851,6 +1851,12 @@ body.has-floating-newsletter {
   align-items: center;
 }
 
+.premium-card-summary {
+  margin: 0.25rem 0 0;
+  color: rgba(31, 61, 51, 0.86);
+  font-weight: 600;
+}
+
 .premium-card .button-primary {
   background: linear-gradient(135deg, rgba(255, 247, 241, 0.98), rgba(250, 224, 209, 0.95));
   color: var(--accent-deep);
@@ -1908,35 +1914,63 @@ body.has-floating-newsletter {
 }
 
 .premium-reassurance h2 {
-  margin-bottom: 0.9rem;
+  margin: 0;
 }
 
-.premium-reassurance-lead {
-  max-width: 48rem;
+.premium-reassurance-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.premium-reassurance-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 248, 243, 0.95), rgba(255, 255, 255, 0.74));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86), 0 12px 24px rgba(214, 150, 43, 0.14);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.premium-reassurance-intro {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.premium-reassurance-context {
+  max-width: 42rem;
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.8;
 }
 
-.premium-reassurance-points {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-top: 1.15rem;
+.premium-reassurance-list {
+  margin: 1.05rem 0 0 4rem;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.95rem;
 }
 
-.premium-reassurance-points span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.3rem;
-  padding: 0.52rem 0.92rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(39, 93, 173, 0.12);
-  color: var(--secondary);
-  font-size: 0.94rem;
+.premium-reassurance-list li {
+  margin: 0;
+  color: rgba(31, 61, 51, 0.86);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.premium-reassurance-list li strong {
   font-weight: 700;
+}
+
+.premium-reassurance-list li em {
+  font-style: italic;
 }
 
 .premium-main {
@@ -2138,6 +2172,7 @@ body.has-floating-newsletter {
   color: var(--secondary);
   font-weight: 700;
 }
+
 
 .result-section {
   padding: 1rem 1rem 0.95rem;
@@ -2693,6 +2728,19 @@ body.has-floating-newsletter {
     width: 10.4rem;
     right: 0.2rem;
     bottom: -0.2rem;
+  }
+
+  .premium-reassurance-head {
+    grid-template-columns: 1fr;
+  }
+
+  .premium-reassurance-heart {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+
+  .premium-reassurance-list {
+    margin-left: 0;
   }
 
   .hero-phone-screen {
