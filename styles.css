@@ -1583,6 +1583,23 @@ body.has-floating-newsletter {
     linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(243, 246, 238, 0.95));
 }
 
+.why-stoparnaque-section {
+  align-items: stretch;
+}
+
+.story-reassurance h2 {
+  max-width: 16ch;
+}
+
+.story-reassurance .premium-reassurance-context {
+  max-width: 36rem;
+}
+
+.story-reassurance-list {
+  margin-left: 0;
+  padding-left: 1.2rem;
+}
+
 .newsletter-section {
   align-items: stretch;
 }
