@@ -3,6 +3,31 @@ window.STOP_ARNAQUE_ALERTS = {
     "Des alertes officielles a lire rapidement quand une fraude circule, puis a ouvrir en entier pour retrouver les bons reflexes, les signes a surveiller et le lien source.",
   items: [
     {
+      slug: "cafc-frontier-plus-iii",
+      topic: "CAFC",
+      levelLabel: "Communique officiel",
+      tone: "warning",
+      title: "Le Centre antifraude du Canada a contribue a l'operation FRONTIER+III, une initiative internationale de lutte contre la fraude",
+      teaser:
+        "Le CAFC indique avoir participe a une operation internationale de perturbation visant des comptes bancaires suspects, des sites Web frauduleux, des numeros de telephone, des comptes de courriel et des activites de mules liees a des reseaux transnationaux de fraudeurs.",
+      fullIntro:
+        "Selon le communique officiel du 4 juin 2026, le Centre antifraude du Canada a contribue a l'operation FRONTIER+III entre le 10 mars et le 7 mai 2026. Cette initiative internationale visait a cerner et a perturber des fraudes, notamment des transactions illicites et plusieurs canaux utilises par des reseaux transnationaux de fraudeurs.",
+      watchList: [
+        "des sites Web, numeros de telephone ou comptes de courriel relies a des operations frauduleuses",
+        "des comptes bancaires suspects utilises pour faire circuler de l'argent vole",
+        "des activites de mules financieres et des fraudes signalees trop tard pour etre rapidement bloquees"
+      ],
+      actionText:
+        "Le bon reflexe est de signaler rapidement toute fraude, tout faux site, tout faux numero ou tout compte suspect. Plus un incident est signale vite, plus les chances de bloquer l'operation ou de recuperer l'argent sont elevees.",
+      metaLabel: "Date du communique",
+      metaValue: "4 juin 2026",
+      primaryLabel: "Lire le communique officiel",
+      primaryUrl:
+        "https://antifraudcentre-centreantifraude.ca/news-nouvelles/2026/2026-06-04-fra.htm",
+      secondaryLabel: "Signaler la fraude",
+      secondaryUrl: "https://signalercyberetfraude.canada.ca/"
+    },
+    {
       slug: "cafc-imposteurs",
       topic: "Alerte CAFC",
       levelLabel: "Imposteurs",
